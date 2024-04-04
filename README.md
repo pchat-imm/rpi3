@@ -3,44 +3,44 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 
 ## Table of contents
 
-1. [installation](#installation) \
-2. [sharing WiFi](#sharingWiFi) \ 
-3. [Total Setup to notebook](#SetupNotebook) \
-4. [ssh](#ssh) \
-5. [RemoteVNC](#RemoteVNC) \
-6. [add Wi-Fi for RPI](#RPIWiFIWPA) \
+1. [installation](#installation) 
+2. [sharing WiFi](#sharingWiFi) 
+3. [Total Setup to notebook](#SetupNotebook) 
+4. [ssh](#ssh) 
+5. [RemoteVNC](#RemoteVNC) 
+6. [add Wi-Fi for RPI](#RPIWiFIWPA) 
 7. [Use case 1: Quectel](#rpi-quectel)
 
 ## 1.installation <a name = "installation"></a>
 - Download Raspberry Pi Imager https://www.raspberrypi.com/software/
     - select device as RPI3
 - in case install in Windows: https://medium.com/@chatchamonphoojaroenchanachai/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94-raspberry-pi-3-model-b-rpi-4ca6a0f5ce01
-- first time, need to connect to monitor, keyboard, and mouse
+- first time before being able to access through SSH, need to connect RPI to the monitor, keyboard, and mouse
 
 ## 2. sharing WiFi <a name = "sharingWiFi"></a>
-keep in mind that if the board can connect to WiFi, it will **blink yellow led**
+keep in mind that if the board can connect to WiFi, it will **blink a yellow LED**
 ### 2.1 Windows
-- control panel -> changing adapter option -> Wi-Fi -> Properties -> Sharing -> allow other networks users to connect through this computer's internet connection
-- control panel -> changing adapter option -> Wi-Fi -> Properties -> TCP/IPv4 
+- `control panel -> changing adapter option -> Wi-Fi -> Properties -> Sharing -> allow other networks users to connect through this computer's internet connection`
+- `control panel -> changing adapter option -> Wi-Fi -> Properties -> TCP/IPv4 
     -> IP address: 192.168.137.1
-    -> Subnet mask: 255.255.255.0
+    -> Subnet mask: 255.255.255.0`
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/3d8f4c9a-287f-4431-8a7a-48449f931aa8" width="30%" height="30%"/>
 
 ### 2.2 MAC OS
-- setting -> WiFi -> TCP/IP: Using DHCP
+- `setting -> WiFi -> TCP/IP: Using DHCP`
 and if the connection turns out correct it will show like this
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/cecee855-0056-4700-8d85-b2421ddcdfa0" width="40%" height="40%"/>
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/c02f471f-ba30-4e7e-886e-e369172196ba" width="40%" height="40%"/>
-
+ 
 
 ## 3. Total Setup to notebook <a name = "SetupNotebook"></a>
+input: SD card, LAN to router, power adapter to computer \
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/797e4f5e-98aa-4c91-8722-651dbcf5f473" width="50%" height="50%"/>
-input: SD card, LAN to router, power adapter to computer
 
 
 ## 4. ssh <a name = "ssh"></a>
 ### 4.0 check IP address
-- in case your rpi is headless (no monitor), you can connect the rpi to the computer and try to find its ip address. \
+- in case your rpi is headless (no monitor), you can connect the rpi to the computer and try to find its ip address. 
 ```
 >> arp -a
 ? (192.168.1.1) at 14:13:46:ae:3d:38 on en0 ifscope [ethernet]
@@ -97,22 +97,22 @@ in ssh (putty - Windows OS, terminal - MAC OS)
 ```
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/169b56dc-170d-4b66-b380-b6bc7574129c" width="40%" height="40%"/>
 
-- Interface options -> VNC -> enable
-- Display options -> VNC Resolition -> (max) 1920x1080
+- `Interface options -> VNC -> enable`
+- `Display options -> VNC Resolition -> (max) 1920x1080`
 - may need to reboot the RPI through the SSH screen `sudo reboot`
 
 ### 5.2 Install VNC viewer on client (Windows, MAC OS)
 - download: https://www.realvnc.com/en/connect/download/viewer/
-- enter IP address of RPI \
+- enter IP address of RPI 
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/1860931d-45c8-4d74-8c62-1b61a7504a9b" width="45%" height="45%"/> 
 
 - when enter the screen, enter username and password. `username: chatchamon, password = 12345678'
-- The incomplete network won't show the top tap (including Wi-Fi, Bluetooth, and Battery display) \
+- The incomplete network won't show the top tap (including Wi-Fi, Bluetooth, and Battery display) 
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/395a5cf1-d1ae-46ef-aa22-e15bbe3e1898" width="45%" height="45%"/>
 
 - the correct RPI interface will include the top tab
     - can see IP address by hovering above the Wi-Fi icon, or see on VNC program
-    - see VNC setup \
+    - see VNC setup 
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/e98cee5a-3cc5-48c9-95f1-d955f7317832" width="45%" height="45%"/>
 
 
@@ -121,6 +121,7 @@ in ssh (putty - Windows OS, terminal - MAC OS)
 ```
 chatchamon@raspberrypi:~ $ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf 
 ```
+- inside the wpa_supplicant.conf file
 ```
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
@@ -271,6 +272,7 @@ OK
 ```
 AT+CGDCONT?
 ```
+### 7.1 ping to see the RPI that connect to Quectel can connect to the internet via 4G/5G
 1. try ping to see if it can connect to the internet
 ```
 at+qping=1,"8.8.8.8"                                               
