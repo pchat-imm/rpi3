@@ -1,10 +1,10 @@
-# rpi3
+# RPI3 & RPI4
 to use raspberry pi, with monitor, windows, mac, and ubuntu
 
 ## Table of contents
 
 1. [installation](#installation) \
-2. [sharing WiFi](#sharingWiFi) \ 
+2. [(optional) sharing WiFi](#sharingWiFi) \ 
 3. [Total Setup to notebook](#SetupNotebook) \
 4. [ssh](#ssh) \
 5. [RemoteVNC](#RemoteVNC) \
@@ -12,13 +12,28 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 7. [Use case 1: Quectel](#rpi-quectel)
 
 ## 1.installation <a name = "installation"></a>
+### 1.1. Pi Imager
 - Download Raspberry Pi Imager https://www.raspberrypi.com/software/
     - select device as RPI3
+### 1.2. RPI3 (Windows OS)
 - in case install in Windows: https://medium.com/@chatchamonphoojaroenchanachai/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94-raspberry-pi-3-model-b-rpi-4ca6a0f5ce01
-- first time, need to connect to monitor, keyboard, and mouse
+### 1.3. RPI4
+<img src="https://github.com/pchat-imm/rpi3/assets/40858099/0552b5d9-acb5-483f-b4fb-3524ccfc9702" width="50%" height="50%"/> 
+Equipment for access the RPI for the first time: 
 
-## 2. sharing WiFi <a name = "sharingWiFi"></a>
-keep in mind that if the board can connect to WiFi, it will **blink yellow led**
+- RPI4 Power Cord (Type C)
+- RPI4 board
+- SD card 32 GB
+- LAN cable (connect to CPE)
+- CPE
+- HDMI to Micro USB (connect to monitor)
+- Keyboard (connect to RPI board)
+- Mouse (connect to RPI board)
+- and Monitor (connect between HDMI (monitor) and micro USB (to RPI4))
+
+## (optional) 2. sharing WiFi <a name = "sharingWiFi"></a>
+- keep in mind that if the board can connect to WiFi, it will **blink yellow led**
+- **In case you do not have CPE**, you need to connect LAN to your computer to share the internet so that we can update the RPI for the first time
 ### 2.1 Windows
 - control panel -> changing adapter option -> Wi-Fi -> Properties -> Sharing -> allow other networks users to connect through this computer's internet connection
 - control panel -> changing adapter option -> Wi-Fi -> Properties -> TCP/IPv4 
@@ -35,11 +50,12 @@ and if the connection turns out correct it will show like this
 
 ## 3. Total Setup to notebook <a name = "SetupNotebook"></a>
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/797e4f5e-98aa-4c91-8722-651dbcf5f473" width="50%" height="50%"/>
-input: SD card, LAN to router, power adapter to computer
 
+- Input: SD card, LAN to router, power adapter to computer
+- This is not for first time using the RPI!!! 
 
-## 4. ssh <a name = "ssh"></a>
-### 4.0 check IP address
+## 4. SSH <a name = "ssh"></a>
+### 4.0 check IP address (so that can ssh to the RPI board)
 - in case your rpi is headless (no monitor), you can connect the rpi to the computer and try to find its ip address. \
 ```
 >> arp -a
@@ -62,11 +78,11 @@ PING raspberrypi.local (192.168.1.36): 56 data bytes
 therefore, the raspberry pi connect to `192.168.1.36` \
 when you have address, you can ssh to the rpi
 
-### 4.1. Putty (Windows)
+### 4.1. access SSH through Putty (Windows)
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/3d7644c3-a201-4d07-a4e8-b274008c912f" width="35%" height="35%"/>
 - IP address: 192.168.1.36, Port: 22, SSH
 
-### 4.2 terminal (MACos)
+### 4.2 access SSH through terminal (MAC OS)
 my username is `chatchamon`, and password `12345678`
 ```
 >> ssh chatchamon@192.168.1.36
@@ -90,7 +106,6 @@ chatchamon@raspberrypi:~ $
 >> Sudo apt install realvnc-vnc-server
 ```
 ### 5.1 Setup VNC on RPI
-
 in ssh (putty - Windows OS, terminal - MAC OS)
 ```
 >> sudo raspi-config
