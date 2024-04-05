@@ -3,12 +3,12 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 
 ## Table of contents
 
-1. [installation](#installation) \
-2. [(optional) sharing WiFi](#sharingWiFi) \ 
-3. [Total Setup to notebook](#SetupNotebook) \
-4. [ssh](#ssh) \
-5. [RemoteVNC](#RemoteVNC) \
-6. [add Wi-Fi for RPI](#RPIWiFIWPA) \
+1. [installation](#installation) 
+2. [(optional) sharing WiFi](#sharingWiFi) 
+3. [Total Setup to notebook](#SetupNotebook) 
+4. [ssh](#ssh) 
+5. [RemoteVNC](#RemoteVNC) 
+6. [add Wi-Fi for RPI](#RPIWiFIWPA) 
 7. [Use case 1: Quectel](#rpi-quectel)
 
 ## 1.installation <a name = "installation"></a>
@@ -18,8 +18,8 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 ### 1.2. RPI3 (Windows OS)
 - in case install in Windows: https://medium.com/@chatchamonphoojaroenchanachai/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94-raspberry-pi-3-model-b-rpi-4ca6a0f5ce01
 ### 1.3. RPI4
-<img src="https://github.com/pchat-imm/rpi3/assets/40858099/0552b5d9-acb5-483f-b4fb-3524ccfc9702" width="50%" height="50%"/> 
-Equipment for access the RPI for the first time: 
+<img src="https://github.com/pchat-imm/rpi3/assets/40858099/0552b5d9-acb5-483f-b4fb-3524ccfc9702" width="50%" height="50%"/> <br/> 
+Equipment for accessing the RPI for the first time: 
 
 - RPI4 Power Cord (Type C)
 - RPI4 board
@@ -33,7 +33,7 @@ Equipment for access the RPI for the first time:
 
 ## (optional) 2. sharing WiFi <a name = "sharingWiFi"></a>
 - keep in mind that if the board can connect to WiFi, it will **blink yellow led**
-- **In case you do not have CPE**, you need to connect LAN to your computer to share the internet so that we can update the RPI for the first time
+- **In case you do not have CPE/Router**, you need to connect LAN to your computer to share the internet so that we can update the RPI for the first time
 
 ### 2.1 Windows
 - `control panel -> changing adapter option -> Wi-Fi -> Properties -> Sharing -> allow other networks users to connect through this computer's internet connection`
