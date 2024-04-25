@@ -30,8 +30,8 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 
 ## 1.installation
 ### 1.1. Pi Imager
-- Download Raspberry Pi Imager https://www.raspberrypi.com/software/
-    - select device as RPI3
+- Download Raspberry Pi Imager from https://www.raspberrypi.com/software/
+    - select device as RPI3 or RPI4
 ### 1.2. RPI3 (Windows OS)
 - in case install in Windows: https://medium.com/@chatchamonphoojaroenchanachai/%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B9%83%E0%B8%8A%E0%B9%89%E0%B8%87%E0%B8%B2%E0%B8%99%E0%B8%9A%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%94-raspberry-pi-3-model-b-rpi-4ca6a0f5ce01
 ### 1.3. RPI4
@@ -43,10 +43,10 @@ Equipment for accessing the RPI for the first time:
 - SD card 32 GB
 - LAN cable (connect to CPE)
 - CPE
-- HDMI to Micro USB (connect to monitor)
+- HDMI to mini-HDMI (connect to monitor)
 - Keyboard (connect to RPI board)
 - Mouse (connect to RPI board)
-- and Monitor (connect between HDMI (monitor) and micro USB (to RPI4))
+- and Monitor (connect between HDMI (monitor) and mini-HDMI (to RPI4))
 
 ## (optional) 2. sharing WiFi
 - keep in mind that if the board can connect to WiFi, it will **blink yellow led**
@@ -86,7 +86,7 @@ mdns.mcast.net (224.0.0.251) at 1:0:5e:0:0:fb on en0 ifscope permanent [ethernet
 ? (239.255.255.250) at 1:0:5e:7f:ff:fa on en0 ifscope permanent [ethernet]
 ```
 and you may ping every address that is showing \
-or tested in ping raspberrypi.local and see the address \
+or tested in `ping raspberrypi.local` and see the address 
 ```
 >> ping raspberrypi.local
 PING raspberrypi.local (192.168.1.36): 56 data bytes
@@ -100,6 +100,7 @@ when you have address, you can ssh to the rpi
 
 ### 4.1. access SSH through Putty (Windows)
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/3d7644c3-a201-4d07-a4e8-b274008c912f" width="35%" height="35%"/>
+
 - IP address: 192.168.1.36, Port: 22, SSH
 
 ### 4.2 access SSH through terminal (MAC OS)
@@ -141,7 +142,7 @@ in ssh (putty - Windows OS, terminal - MAC OS)
 - enter IP address of RPI 
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/1860931d-45c8-4d74-8c62-1b61a7504a9b" width="45%" height="45%"/> 
 
-- when enter the screen, enter username and password. `username: chatchamon, password = 12345678'
+- when enter the screen, enter username and password. `username: chatchamon, password = 12345678`
 - The incomplete network won't show the top tap (including Wi-Fi, Bluetooth, and Battery display) 
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/395a5cf1-d1ae-46ef-aa22-e15bbe3e1898" width="45%" height="45%"/>
 
@@ -152,7 +153,7 @@ in ssh (putty - Windows OS, terminal - MAC OS)
 
 
 ## 6. add Wi-Fi to RPI
-- change wpa_supplicant.conf file
+- change `wpa_supplicant.conf` file
 ```
 chatchamon@raspberrypi:~ $ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf 
 ```
@@ -183,7 +184,7 @@ network={
 ```
 chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf
 ```
-- Apply new config to the WLAN interface. — or else reboot the system
+- Apply new config to the WLAN interface — or else reboot the system
 ```
 wpa_cli -i wlan0 reconfigure
 ```
@@ -194,8 +195,9 @@ need to have notebook and RPI in the same network, therefore both the laptop and
 - have CPE with SIM TRUE
 - connect RPI and Notebook with WiFi from (the CPE w/SIM TRUE)
 - collect IP address of the RPI which shown on the screen (the CPE w/SIM TRUE)
-- Notebook VNC to RPI \
-then change from commercial sim to other WiFi \
+- Notebook VNC to RPI 
+
+then change from commercial sim to other WiFi 
 - connect RPI to WiFi
 - see new RPI IP address on notebook's VNC
 - change notebook to WiFi
