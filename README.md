@@ -3,15 +3,32 @@ to use raspberry pi, with monitor, windows, mac, and ubuntu
 
 ## Table of contents
 
-1. [installation](#installation) 
-2. [(optional) sharing WiFi](#sharingWiFi) 
-3. [Total Setup to notebook](#SetupNotebook) 
-4. [ssh](#ssh) 
-5. [RemoteVNC](#RemoteVNC) 
-6. [add Wi-Fi for RPI](#RPIWiFIWPA) 
-7. [Use case 1: Quectel](#rpi-quectel)
+<!-- toc -->
 
-## 1.installation <a name = "installation"></a>
+- [1.installation](#1installation)
+  * [1.1. Pi Imager](#11-pi-imager)
+  * [1.2. RPI3 (Windows OS)](#12-rpi3-windows-os)
+  * [1.3. RPI4](#13-rpi4)
+- [(optional) 2. sharing WiFi](#optional-2-sharing-wifi)
+  * [2.1 Windows](#21-windows)
+  * [2.2 MAC OS](#22-mac-os)
+- [3. Total Setup to notebook](#3-total-setup-to-notebook)
+- [4. SSH](#4-ssh)
+  * [4.0 check IP address (so that can ssh to the RPI board)](#40-check-ip-address-so-that-can-ssh-to-the-rpi-board)
+  * [4.1. access SSH through Putty (Windows)](#41-access-ssh-through-putty-windows)
+  * [4.2 access SSH through terminal (MAC OS)](#42-access-ssh-through-terminal-mac-os)
+- [5. RemoteVNC](#5-remotevnc)
+  * [5.0 install VNC server on RPI](#50-install-vnc-server-on-rpi)
+  * [5.1 Setup VNC on RPI](#51-setup-vnc-on-rpi)
+  * [5.2 Install VNC viewer on client (Windows, MAC OS)](#52-install-vnc-viewer-on-client-windows-mac-os)
+- [6. add Wi-Fi to RPI](#6-add-wi-fi-to-rpi)
+- [7. First time SSH and VNC](#7-first-time-ssh-and-vnc)
+- [8. Use case 1: Quectel](#8-use-case-1-quectel)
+  * [7.1 ping to see the RPI that connect to Quectel can connect to the internet via 4G/5G](#71-ping-to-see-the-rpi-that-connect-to-quectel-can-connect-to-the-internet-via-4g5g)
+
+<!-- tocstop -->
+
+## 1.installation
 ### 1.1. Pi Imager
 - Download Raspberry Pi Imager https://www.raspberrypi.com/software/
     - select device as RPI3
@@ -31,7 +48,7 @@ Equipment for accessing the RPI for the first time:
 - Mouse (connect to RPI board)
 - and Monitor (connect between HDMI (monitor) and micro USB (to RPI4))
 
-## (optional) 2. sharing WiFi <a name = "sharingWiFi"></a>
+## (optional) 2. sharing WiFi
 - keep in mind that if the board can connect to WiFi, it will **blink yellow led**
 - **In case you do not have CPE/Router**, you need to connect LAN to your computer to share the internet so that we can update the RPI for the first time
 
@@ -49,7 +66,7 @@ and if the connection turns out correct it will show like this
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/c02f471f-ba30-4e7e-886e-e369172196ba" width="40%" height="40%"/>
  
 
-## 3. Total Setup to notebook <a name = "SetupNotebook"></a>
+## 3. Total Setup to notebook 
 input: SD card, LAN to router, power adapter to computer \
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/797e4f5e-98aa-4c91-8722-651dbcf5f473" width="50%" height="50%"/>
 
@@ -57,7 +74,7 @@ input: SD card, LAN to router, power adapter to computer \
 - This is not for first time using the RPI!!! 
 
 
-## 4. SSH <a name = "ssh"></a>
+## 4. SSH
 ### 4.0 check IP address (so that can ssh to the RPI board)
 - in case your rpi is headless (no monitor), you can connect the rpi to the computer and try to find its ip address. \
 ```
@@ -102,7 +119,7 @@ Last login: Thu Apr  4 08:01:31 2024
 chatchamon@raspberrypi:~ $
 ```
 
-## 5. RemoteVNC <a name = "RemoteVNC"></a>
+## 5. RemoteVNC 
 ### 5.0 install VNC server on RPI
 ```
 >> Sudo apt update
@@ -134,7 +151,7 @@ in ssh (putty - Windows OS, terminal - MAC OS)
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/e98cee5a-3cc5-48c9-95f1-d955f7317832" width="45%" height="45%"/>
 
 
-## 6. add Wi-Fi to RPI<a name = RPIWiFIWPA></a>
+## 6. add Wi-Fi to RPI
 - change wpa_supplicant.conf file
 ```
 chatchamon@raspberrypi:~ $ sudo cat /etc/wpa_supplicant/wpa_supplicant.conf 
@@ -171,7 +188,23 @@ chmod 0600 /etc/wpa_supplicant/wpa_supplicant.conf
 wpa_cli -i wlan0 reconfigure
 ```
 
-## 7. Use case 1: Quectel<a name = rpi-quectel></a>
+## 7. First time collect RPI IP for SSH and VNC
+**@1mm - add info here**
+<img src="https://github.com/pchat-imm/rpi3/assets/40858099/19a324ce-2c98-4bff-bfb1-3855d1286cc0" width="50%" height="50%"/> <br/> 
+need to have notebook and RPI in the same network, therefore both the laptop and rpi must connect to the same WiFi/LAN
+- have CPE with SIM TRUE
+- connect RPI and Notebook with WiFi from (the CPE w/SIM TRUE)
+- collect IP address of the RPI which shown on the screen (the CPE w/SIM TRUE)
+- Notebook VNC to RPI
+then change from commercial sim to other WiFi
+- connect RPI to WiFi
+- see new RPI IP address
+- change notebook to WiFi
+- Notebook VNC to RPI address
+
+
+
+## 8. Use case 1: Quectel
 ![rpi-rpi_quectel](https://github.com/pchat-imm/rpi3/assets/40858099/99c22b8f-624c-4fc1-b2d1-575dd8af914f)
 - make RPI connect to internet via 4G/5G using Quectel board. The end result is to be able to ping with 4G/5G using `AT command`, or `wwan0 interface`, or `VNC to the RPI` 
 - see Quectel setup info at the repository: https://github.com/pchat-imm/quectel_rm510q_gl 
@@ -303,7 +336,7 @@ OK
 ```
 2. then exit minicom, and you can try ping again with `wwan0` interface
 ```
->> ping -I wwan0 -c 5 8.8.8.8
+ping -I wwan0 -c 5 8.8.8.8
 ```
 3. You may be able to ping in VNC screen that access the RPI
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/b929e263-4e73-4994-a75c-ce410f8847ba" width="45%" height="45%"/>
