@@ -189,18 +189,17 @@ wpa_cli -i wlan0 reconfigure
 ```
 
 ## 7. First time collect RPI IP for SSH and VNC
-**@1mm - add info here**
 <img src="https://github.com/pchat-imm/rpi3/assets/40858099/19a324ce-2c98-4bff-bfb1-3855d1286cc0" width="50%" height="50%"/> <br/> 
 need to have notebook and RPI in the same network, therefore both the laptop and rpi must connect to the same WiFi/LAN
 - have CPE with SIM TRUE
 - connect RPI and Notebook with WiFi from (the CPE w/SIM TRUE)
 - collect IP address of the RPI which shown on the screen (the CPE w/SIM TRUE)
-- Notebook VNC to RPI
-then change from commercial sim to other WiFi
+- Notebook VNC to RPI \
+then change from commercial sim to other WiFi \
 - connect RPI to WiFi
-- see new RPI IP address
+- see new RPI IP address on notebook's VNC
 - change notebook to WiFi
-- Notebook VNC to RPI address
+- Notebook VNC to new RPI address
 
 
 
